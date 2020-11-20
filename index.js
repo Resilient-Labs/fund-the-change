@@ -54,10 +54,8 @@ passport.deserializeUser(function(_id, done) {
 // Load Passport strategies
 const localSignupStrategy = require("./server/passport/local-signup");
 const localLoginStrategy = require("./server/passport/local-login");
-const FacebookStrategy = require("./server/passport/passport-facebook");
 passport.use("local-signup", localSignupStrategy);
 passport.use("local-login", localLoginStrategy);
-passport.use("facebook", FacebookStrategy);
 
 // Pass the authentication checker middleware
 const authCheckMiddleware = require("./server/middleware/auth-check");

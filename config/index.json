@@ -1,6 +1,4 @@
 {
-    "dbUri": "mongodb://CONNECTIONSTRING,
-    "jwtSecret": "JWTSECRET",
-    "FB_ID": "FACEBOOKID",
-    "FB_Secret": "FACEBOOKSECRET"
+    "dbUri": "mongodb+srv://2020b:uGSMAbaETq8gCXFS@cluster0.slzme.mongodb.net/Fundthechange?retryWrites=true&w=majority",
+    "jwtSecret": "JWTSECRET"
 }

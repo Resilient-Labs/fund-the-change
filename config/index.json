@@ -1,4 +1,0 @@
-{
-    "dbUri": "mongodb+srv://2020b:uGSMAbaETq8gCXFS@cluster0.slzme.mongodb.net/Fundthechange?retryWrites=true&w=majority",
-    "jwtSecret": "JWTSECRET"
-}

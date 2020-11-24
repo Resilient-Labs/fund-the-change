@@ -14,6 +14,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Home from '../Home/Home';
 import About from '../About/About';
+import HighlightedOrg from '../HighlightedOrg/HighlightedOrg'
 
 function App() {
   return (
@@ -57,6 +58,14 @@ function App() {
     <Route exact path="/OrgCard">
     <Header/>
     <OrgCard/>
+    <Footer/>
+    </Route>
+    </Switch>
+
+    <Switch>
+    <Route exact path="/HighlightedOrg">
+    <Header/>
+    <HighlightedOrg/>
     <Footer/>
     </Route>
     </Switch>

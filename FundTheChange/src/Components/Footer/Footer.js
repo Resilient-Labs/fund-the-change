@@ -19,7 +19,7 @@ function Footer() {
             {/*2 column*/}
           <div className="col-md-3 col-sm-6">
             <ul className="list-unstyled">
-            <li className="boo"><i class="fas fa-map-marker-alt"></i></li>
+            <li className="b"><i class="fas fa-map-marker-alt"></i></li>
               <li>1 Resilient st.</li>
               <li>Boston, MA</li>
               <li>01234</li>

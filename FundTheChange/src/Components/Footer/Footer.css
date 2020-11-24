@@ -8,6 +8,7 @@
   font-size: 15px;
   color: white;
   clear:both;
+  padding-top: 30px;
 }
 .bot{
   text-align: center;
@@ -24,3 +25,4 @@
 .fab{
   font-size: 1.3rem;
 }
+

@@ -1,0 +1,12 @@
+.main-footer{
+  background-color: rgb(141,174,113);
+  height: auto;
+  overflow: auto;
+  font-size: 15px;
+}
+.bot{
+  text-align: center;
+}
+.container{
+  height: 173px;
+}

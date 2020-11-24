@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+}
+
+.HomeContainer{
+width: 100%;
+
+}
+.carousel{
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    float: left;
+    width:90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    
+}
+
+.topSection{
+    padding-top:20px;
+    padding-bottom:20px;
+    float: left;
+    width: 100%;
+}
+
+.topLeft{
+    float: left;
+    width:50%;
+}
+.topRight{
+    float: left;
+    width: 50%;
+}
+
+.LeftImage{
+    width: 80%;
+}
+.sectionParagraph{
+    text-align: center;
+    width:80%;
+    margin: 0px 0px 0px 50px;  
+}
+.gray{
+    background-color: gainsboro;
+}
+
+.bgImage{
+    width: 500px;
+    height: 340px;
+}

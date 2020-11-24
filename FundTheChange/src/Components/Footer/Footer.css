@@ -1,12 +1,25 @@
+*{
+  line-height: 2;
+}
 .main-footer{
-  background-color: rgb(141,174,113);
+  background-color: rgb(52,58,64);
   height: auto;
   overflow: auto;
   font-size: 15px;
+  color: white;
 }
 .bot{
   text-align: center;
 }
 .container{
   height: 173px;
+}
+.boo{
+  text-align: center;
+}
+.under{
+  text-decoration: underline;
+}
+.fab{
+  font-size: 1.3rem;
 }

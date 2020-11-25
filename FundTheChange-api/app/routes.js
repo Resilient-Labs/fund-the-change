@@ -38,6 +38,41 @@ module.exports = function (app, passport, db, ObjectId) {
 
 
   app.post("/stripe/charge", cors(), async (req, res) => {
+    console.log("heklllo I am in charge");
+
+        let organizationId = parseInt(req.body.organizationId);
+        let amount = parseInt(req.body.amount);
+
+        db.collection('donation').save({
+            // setting property for a specific users
+            // user: req.user,
+            userId: ObjectId(req.body.id),
+            organizationId: ObjectId(req.body.id),
+            amount: amount
+          },
+
+
+          db.collection('organizations').update({
+      _id: ObjectId(req.body.id)
+  }, {
+    "citiName": "Jakarta Selatan",
+    "provName": "test update Jakarta",
+    amount:amount
+  }, {
+    upsert: true
+  }),
+
+
+
+
+  (err, result) => {
+            if (err) {
+              return console.log(err)
+            } else {
+
+
+
+
     console.log("stripe-routes.js 9 | route reached", req.body);
     let { amount, id } = req.body;
     console.log("stripe-routes.js 10 | amount and id", amount, id);

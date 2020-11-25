@@ -1,4 +1,12 @@
+const stripe = require('stripe')('sk_test_51Ha6EUEsCFPlCMG1zxzWoFCMCkMdTEEnxmtsY54cDJ1ZCMebV8NwxX9V9IFrDojB0nhtXTdhk1EVVD1KDiUUPi9g00gVqMcbFl'); // Add your Secret Key Here
+const cors = require("cors");
+
 module.exports = function (app, passport, db, ObjectId) {
+
+  const fs = require('fs')
+
+  app.use(cors());
+
 
   app.get('/userJournals', (req, res) => {
     let uId = ObjectId(req.session.passport.user)
@@ -28,6 +36,32 @@ module.exports = function (app, passport, db, ObjectId) {
     failureFlash: true // allow flash messages
   }));
 
+
+  app.post("/stripe/charge", cors(), async (req, res) => {
+    console.log("stripe-routes.js 9 | route reached", req.body);
+    let { amount, id } = req.body;
+    console.log("stripe-routes.js 10 | amount and id", amount, id);
+    try {
+      const payment = await stripe.paymentIntents.create({
+        amount: amount,
+        currency: "USD",
+        description: "Your Company Description",
+        payment_method: id,
+        confirm: true,
+      });
+      console.log("stripe-routes.js 19 | payment", payment);
+      res.json({
+        message: "Payment Successful",
+        success: true,
+      });
+    } catch (error) {
+      console.log("stripe-routes.js 17 | error", error);
+      res.json({
+        message: "Payment Failed",
+        success: false,
+      });
+    }
+  });
 
     app.get("/organizations", (req, res) => {
       db.collection("organizations")

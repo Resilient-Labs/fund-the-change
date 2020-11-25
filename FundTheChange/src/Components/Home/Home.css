@@ -1,0 +1,191 @@
+*{
+    box-sizing: border-box;
+}
+
+.HomeContainer{
+width: 100%;
+
+}
+.carousel{
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    float: left;
+    width:90%;
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+
+.topSection{
+    padding-top:20px;
+    padding-bottom:20px;
+    float: left;
+    width: 100%;
+}
+
+.topLeft{
+    float: left;
+    width:50%;
+}
+.topRight{
+    float: left;
+    width: 50%;
+}
+
+.LeftImage{
+    width: 70%;
+    height: 70%;
+}
+.sectionParagraph{
+    text-align: center;
+    width:80%;
+    margin: 0px 0px 0px 50px;
+}
+.gray{
+    background-color: gainsboro;
+}
+
+.bgImage{
+    width: 500px;
+    height: 340px;
+}
+
+.bottomSection{
+    text-align:center;
+    background-color: #ccc;
+    float: left;
+    width: 100%;
+    height: 380px;
+    padding-top: 30px;
+}
+
+.testimonial{
+    text-align:center;
+    background-color:white;
+    float: left;
+    width: 100%;
+    height: 420px;
+    padding-top: 30px;
+}
+.delImg{
+    border-radius: 50%;
+    width: 14%;
+    height: 40%;
+
+}
+
+.black{
+    background-color:rgba(0, 0, 0, 0.822);
+}
+.white{
+    color: gainsboro;
+
+}
+
+.topRightMobile{
+    display: none;
+}
+
+
+
+
+/* anything greater than 601 and lower 960 */
+@media only screen and (min-width: 601px) and (max-width: 960px) {
+.mobile{
+    display: none;
+
+}
+    .topRightMobile{
+        display: block;
+    }
+
+
+    .carousel{
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin-left: 0%;
+        margin-right: 0%;
+        float: left;
+        width:100%;
+
+
+    }
+
+
+    .topLeft{
+        float: left;
+        width:100%;
+    }
+    .topRight{
+        float: left;
+        width: 100%;
+    }
+
+
+
+    .bye{
+        display:none;
+    }
+
+    .LeftImage{
+        width: 70%;
+        height: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+
+    }
+
+}
+
+
+
+
+/* anything lower than 600px */
+@media only screen and (max-width: 600px) {
+
+    .mobile{
+        display: none;
+
+    }
+
+    .topRightMobile{
+        display: block;
+    }
+
+    .carousel{
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin-left: 0%;
+        margin-right: 0%;
+        float: left;
+        width:100%;
+
+
+    }
+
+    .topLeft{
+        float: left;
+        width:100%;
+    }
+    .topRight{
+        float: left;
+        width: 100%;
+    }
+
+
+
+    .bye{
+        display:none;
+    }
+    .LeftImage{
+        width: 70%;
+        height: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+
+    }
+
+
+
+}

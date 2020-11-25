@@ -20,7 +20,7 @@ export const CheckoutForm = () => {
         const response = await axios.post(
           "http://localhost:8000/stripe/charge",
           {
-            amount: 10099,
+            amount: 49039433,
             id: id,
           }
         );

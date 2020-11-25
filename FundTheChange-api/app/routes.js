@@ -39,14 +39,14 @@ module.exports = function (app, passport, db, ObjectId) {
 
   app.post("/stripe/charge", cors(), async (req, res) => {
     console.log("stripe-routes.js 9 | route reached", req.body);
-    let { amount, id } = req.body;
+    let { amount, id } = req.body.id;
 
     db.collection('donation').save({
       // setting property for a specific users
       // user: req.user,
       userId: ObjectId(req.body.id),
       organizationId: ObjectId(req.body.id),
-      amount: amount
+      amount: { amount, id }
     },
 
     console.log("stripe-routes.js 10 | amount and id", amount, id));

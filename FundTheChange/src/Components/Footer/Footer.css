@@ -3,8 +3,7 @@
 }
 .main-footer{
   background-color: rgb(52,58,64);
-  height: auto;
-  overflow: auto;
+  height: 350px;
   font-size: 15px;
   color: white;
   clear:both;
@@ -25,4 +24,58 @@
 .fab{
   font-size: 1.3rem;
 }
+
+/* anything greater than 601 and lower 960 */
+@media only screen and (min-width: 601px) and (max-width: 960px) {
+
+  .bye{
+      display:none;
+
+  }
+  .main-footer{
+    background-color: rgb(52,58,64);
+    height: 300px;
+    font-size: 15px;
+    color: white;
+    clear:both;
+    padding-top: 30px;
+  }
+  .bob{
+    border: 1px solid red;
+    width: 20% !important;
+    
+  }
+  
+
+}
+
+
+
+
+/* anything lower than 600px */
+@media only screen and (max-width: 600px) { 
+  .bye{
+      display:none;
+  }
+  .main-footer{
+    background-color: rgb(52,58,64);
+    height: 300px;
+    font-size: 15px;
+    color: white;
+    clear:both;
+    padding-top: 30px;
+   
+  }
+  
+  .bob{
+    border: 1px solid red;
+    width: 50% !important;
+    /* margin-left: 15%;
+    margin-right: 15%; */
+
+    
+  }
+}
+
+
 

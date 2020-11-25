@@ -8,16 +8,16 @@ function Footer() {
         <div className="row">
           {/*1 column*/}
           <div className="col-md-3 col-sm-6">
-            <h6>FundTheChange</h6>
+            <h6 className="bye">Fund The Change</h6>
             <ul className="list-unstyled">
-              <li className="under"><a href="#">FAQs</a></li>
-              <li className="under"><a href="#">Volunteer</a></li>
-              <li className="under"><a href="#">About</a></li>
-              <li className="under"><a href="#">Org Sign-Up</a></li>
+              <li className="under bye"><a href="#">FAQs</a></li>
+              <li className="under bye"><a href="#">Volunteer</a></li>
+              <li className="under bye"><a href="#">About</a></li>
+              <li className="under bye"><a href="#">Org Sign-Up</a></li>
             </ul>
           </div>
             {/*2 column*/}
-          <div className="col-md-3 col-sm-6">
+          <div className="bob">
             <ul className="list-unstyled">
             <li className="b"><i class="fas fa-map-marker-alt"></i></li>
               <li>1 Resilient st.</li>
@@ -27,7 +27,7 @@ function Footer() {
             </ul>
           </div>
           {/*third column*/}
-          <div className="col-md-3 col-sm-6">
+          <div className="bob">
             <ul className="list-unstyled">
               <li className="under">Contact us</li>
               <li className="under"><a className="under" href="#"><i class="fab fa-instagram"></i></a></li>
@@ -38,9 +38,9 @@ function Footer() {
           {/*4 column*/}
           <div className="col-md-3 col-sm-6">
             <ul className="list-unstyled">
-              <li className="under"><a className="under" href="#">Legal Stuff</a></li>
-              <li className="under"><a className="under" href="#">Privacy Policy  </a></li>
-              <li><a className="under" href="#">Terms Of Use</a></li>
+              <li className="under bye"><a className="under" href="#">Legal Stuff</a></li>
+              <li className="under bye"><a className="under" href="#">Privacy Policy  </a></li>
+              <li><a className="under bye" href="#">Terms Of Use</a></li>
             </ul>
           </div>
         </div>

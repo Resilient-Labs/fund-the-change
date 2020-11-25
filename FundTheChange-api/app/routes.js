@@ -1,4 +1,11 @@
+const stripe = require('stripe')('sk_test_51Ha6EUEsCFPlCMG1zxzWoFCMCkMdTEEnxmtsY54cDJ1ZCMebV8NwxX9V9IFrDojB0nhtXTdhk1EVVD1KDiUUPi9g00gVqMcbFl'); // Add your Secret Key Here
+
+
 module.exports = function (app, passport, db, ObjectId) {
+
+  const fs = require('fs')
+
+
 
   app.get('/userJournals', (req, res) => {
     let uId = ObjectId(req.session.passport.user)
@@ -12,6 +19,137 @@ module.exports = function (app, passport, db, ObjectId) {
 
     })
   })
+
+
+
+  app.post('/charge', (req, res) => {
+      console.log("heklllo I am in charge");
+
+      let organizationId = parseInt(req.body.organizationId);
+      let amount = parseInt(req.body.amount);
+
+      db.collection('donation').save({
+          // setting property for a specific users
+          // user: req.user,
+          userId: ObjectId(req.body.id),
+          organizationId: ObjectId(req.body.id),
+          amount: amount
+        },
+
+        // db.findOneAndUpdate('organizations'({
+        //   // setting property for a specific users
+        //   // user: req.user,
+        //   // userId:ObjectId(req.params.id),
+        //   organizationId: ObjectId(req.params.id),
+        //   amount:amount
+        // },
+        // db.collection('organizations').update({
+        //     organizationId: ObjectId(req.params.id)
+        //   }, {
+        //     $set: {
+        //       amount: amount
+        //     },
+
+
+        db.collection('organizations').update({
+            _id: ObjectId(req.body.id)
+        }, {
+          "citiName": "Jakarta Selatan",
+          "provName": "test update Jakarta",
+          amount:amount
+        }, {
+          upsert: true
+        }),
+
+
+
+        (err, result) => {
+          if (err) {
+            return console.log(err)
+          } else {
+            try {
+              stripe.customers
+                .create({
+
+                  name: req.body.name,
+                  email: req.body.email,
+                  source: req.body.stripeToken
+                })
+                .then(customer =>
+                  stripe.charges.create({
+                    amount: req.body.amount * 100,
+                    currency: "usd",
+                    customer: customer.id
+                  })
+                )
+                .then(() => res.redirect(`/viewdonation/${result}`))
+                .catch(err => {
+                  console.log(err);
+                  console.log(err);
+                })
+            } catch (err) {
+              res.send(err);
+            }
+          }
+
+        })
+      // res.redirect('complete.html')
+      res.json({
+        msg: "succe"
+      })
+    })
+
+
+
+
+
+      app.get('/complete.html', (req, res) => {
+        const html = fs.readFileSync(__dirname + '/complete.html', {
+          encoding: 'utf8'
+        })
+        res.set('Content-Type', 'text/html')
+
+        res.send(html)
+        res.end()
+
+      })
+
+
+
+
+      app.get('/index.html', (req, res) => {
+  const html = fs.readFileSync(__dirname + '/index.html', {
+    encoding: 'utf8'
+  })
+  res.set('Content-Type', 'text/html')
+
+  res.send(html)
+  res.end()
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // process the login form
   app.post('/login', passport.authenticate('local-login', {
@@ -40,4 +178,3 @@ module.exports = function (app, passport, db, ObjectId) {
   });
 
 }
-

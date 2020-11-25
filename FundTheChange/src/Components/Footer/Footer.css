@@ -1,5 +1,6 @@
 *{
   line-height: 2;
+  box-sizing:border-box;
 }
 .main-footer{
   background-color: rgb(52,58,64);
@@ -8,15 +9,11 @@
   color: white;
   clear:both;
   padding-top: 30px;
-}
-.bot{
-  text-align: center;
+  width:100%;
+  float: left;
 }
 .container{
   height: 173px;
-}
-.boo{
-  text-align: center;
 }
 .under{
   text-decoration: underline;
@@ -24,6 +21,24 @@
 .fab{
   font-size: 1.3rem;
 }
+
+.footerSection2,.footerSection3,.footerSection4,.footerSection1{
+  float: left;
+  width: 25%;
+}
+
+.footerSection5{
+  width:100%;
+  float: left;
+  text-align: center;
+}
+ul, .title{
+  text-align:center;
+  list-style: none;
+}
+
+
+
 
 /* anything greater than 601 and lower 960 */
 @media only screen and (min-width: 601px) and (max-width: 960px) {
@@ -40,11 +55,8 @@
     clear:both;
     padding-top: 30px;
   }
-  .bob{
-    border: 1px solid red;
-    width: 20% !important;
-    
-  }
+  
+  
   
 
 }
@@ -67,14 +79,7 @@
    
   }
   
-  .bob{
-    border: 1px solid red;
-    width: 50% !important;
-    /* margin-left: 15%;
-    margin-right: 15%; */
 
-    
-  }
 }
 
 

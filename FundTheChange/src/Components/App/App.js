@@ -14,7 +14,6 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Home from '../Home/Home';
 import About from '../About/About';
-import About from '../IndividualOrg/IndividualOrg';
 import HighlightedOrg from '../HighlightedOrg/HighlightedOrg'
 
 function App() {
@@ -55,13 +54,6 @@ function App() {
     </Route>
     </Switch>
 
-    <Switch>
-    <Route exact path="/individuaOrg">
-    <Header/>
-    <IndividualOrg/>
-    <Footer/>
-    </Route>
-    </Switch>
 
     <Switch>
     <Route exact path="/OrgCard">

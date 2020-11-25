@@ -4,55 +4,62 @@ import "./Footer.css";
 function Footer() {
   return (
     <div className="main-footer">
-      <div className="container">
-        <div className="row">
-          {/*1 column*/}
-          <div className="col-md-3 col-sm-6">
-            <h6 className="bye">Fund The Change</h6>
-            <ul className="list-unstyled">
+      
+      <section className="footerSection1">
+            <h6 className="bye title">Fund The Change</h6>
+            <ul className="">
               <li className="under bye"><a href="#">FAQs</a></li>
               <li className="under bye"><a href="#">Volunteer</a></li>
               <li className="under bye"><a href="#">About</a></li>
               <li className="under bye"><a href="#">Org Sign-Up</a></li>
             </ul>
-          </div>
-            {/*2 column*/}
-          <div className="bob">
-            <ul className="list-unstyled">
+     </section>
+          
+        <section className="footerSection2">
+            <ul className="">
             <li className="b"><i class="fas fa-map-marker-alt"></i></li>
               <li>1 Resilient st.</li>
               <li>Boston, MA</li>
               <li>01234</li>
 
             </ul>
-          </div>
-          {/*third column*/}
-          <div className="bob">
-            <ul className="list-unstyled">
+            </section>
+            
+        
+        <section> 
+            <ul className="footerSection3">
               <li className="under">Contact us</li>
               <li className="under"><a className="under" href="#"><i class="fab fa-instagram"></i></a></li>
               <li className="under"><a className="under" href="#"><i class="fab fa-facebook-f"></i></a></li>
               <li className="under"><a className="under" href="#"><i class="fab fa-twitter"></i></a></li>
             </ul>
-          </div>
-          {/*4 column*/}
-          <div className="col-md-3 col-sm-6">
-            <ul className="list-unstyled">
+            </section>
+        
+        <section className="footerSection4"> 
+            <ul className="">
               <li className="under bye"><a className="under" href="#">Legal Stuff</a></li>
               <li className="under bye"><a className="under" href="#">Privacy Policy  </a></li>
               <li><a className="under bye" href="#">Terms Of Use</a></li>
             </ul>
-          </div>
-        </div>
-        {/*Footer bottom */}
+            </section>
+      
 
-      </div>
-      <div className="footer-bottom bot">
-      <p className="text-xs-center">
+     
+      <section className="footerSection5">
+      <p className="">
         &copy;{new Date().getFullYear()} FundTheChange - ResilientLabs - All Rights Reserved
       </p>
-      </div>
+    </section>
+
     </div>
+
+
+
+
+
+
+
+
 
   )
 }

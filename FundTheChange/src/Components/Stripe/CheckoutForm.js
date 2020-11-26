@@ -1,10 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
+
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 
 export const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
+  const [amount, setAmount ] = useState(0);
+
+
+
+
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -20,7 +28,7 @@ export const CheckoutForm = () => {
         const response = await axios.post(
           "http://localhost:8000/stripe/charge",
           {
-            amount: 49039433,
+            amount: amount,
             id: id,
           }
         );
@@ -39,6 +47,7 @@ export const CheckoutForm = () => {
 
   return (
     <form onSubmit={handleSubmit} style={{ maxWidth: 400 }}>
+    <input placeholdeder="placeholdeder" onChange={ (e) => setAmount(e.target.value)}/>
       <CardElement />
       <button>Pay</button>
     </form>

@@ -38,18 +38,18 @@ module.exports = function (app, passport, db, ObjectId) {
 
 
   app.post("/stripe/charge", cors(), async (req, res) => {
-    console.log("stripe-routes.js 9 | route reached", req.body);
-    let { amount, id } = req.body.id;
+    // console.log("stripe-routes.js 9 | route reached", req.body);
+    let { amount, id } = req.body;
 
     db.collection('donation').save({
       // setting property for a specific users
       // user: req.user,
-      userId: ObjectId(req.body.id),
-      organizationId: ObjectId(req.body.id),
-      amount: { amount, id }
-    },
+      userId: ObjectId(req.session.passport.email),
+      // organizationId: ObjectId(req.body.organizationId),
+      amount: amount
+    })
 
-    console.log("stripe-routes.js 10 | amount and id", amount, id));
+    // console.log("stripe-routes.js 10 | amount and id", amount, id);
     try {
       const payment = await stripe.paymentIntents.create({
         amount: amount,

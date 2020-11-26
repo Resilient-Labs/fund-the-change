@@ -54,7 +54,7 @@ module.exports = function (app, passport, db, ObjectId) {
       const payment = await stripe.paymentIntents.create({
         amount: amount,
         currency: "USD",
-        description: "Your Company Description",
+        description: "Your Company Description!!!",
         payment_method: id,
         confirm: true,
       });

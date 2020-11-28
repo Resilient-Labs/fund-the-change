@@ -71,7 +71,9 @@ function App() {
 
     <Switch>
       <Route exact path="/Stripe">
+        <Header/>
         <StripeContainer />
+        <Footer/>
       </Route>
     </Switch>
 

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-
+import './Stripe.css'
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 
@@ -7,6 +7,8 @@ export const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const [amount, setAmount ] = useState(0);
+  const [customer, setcustomer ] = useState(0);
+
 
 
 
@@ -16,6 +18,9 @@ export const CheckoutForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const index = window.location.pathname.lastIndexOf("/")
+    const organizations= window.location.pathname.slice(index+1)
+    console.log("hello I am organizations id",organizations);
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
@@ -29,6 +34,8 @@ export const CheckoutForm = () => {
           "http://localhost:8000/stripe/charge",
           {
             amount: amount,
+            customer:customer,
+            organizationId:organizations,
             id: id,
           }
         );
@@ -47,9 +54,18 @@ export const CheckoutForm = () => {
 
   return (
     <form onSubmit={handleSubmit} style={{ maxWidth: 400 }}>
-    <input placeholdeder="placeholdeder" onChange={ (e) => setAmount(e.target.value)}/>
+    <section className="payment">
+    <div>
+    <p>Enter Amount </p>
+    <input className="field" placeholder="Amount" onChange={ (e) => setAmount(e.target.value)}/>
+    </div>
+    <div>
+    <p> Enter email </p>
+    <input className="field" placeholder="Email" onChange={ (e) => setcustomer(e.target.value)}/>
+    </div>
       <CardElement />
-      <button>Pay</button>
+      <button className="Pay">Pay</button>
+      </section>
     </form>
   );
 };

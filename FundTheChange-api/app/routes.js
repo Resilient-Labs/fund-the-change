@@ -8,18 +8,13 @@ module.exports = function (app, passport, db, ObjectId) {
   app.use(cors());
 
 
-  app.get('/userJournals', (req, res) => {
-    let uId = ObjectId(req.session.passport.user)
-    console.log(uId);
 
-    db.collection('journal').find({ user: uId }).toArray((err, result) => {
-      if (err) return console.log(err)
-
-      console.log(result)
-      res.send({ result: result })
-
-    })
-  })
+// is loogedd in funciton to check who's logged in
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+    res.redirect('/');
+}
 
   // process the login form
   app.post('/login', passport.authenticate('local-login', {
@@ -37,24 +32,65 @@ module.exports = function (app, passport, db, ObjectId) {
   }));
 
 
-  app.post("/stripe/charge", cors(), async (req, res) => {
+  app.post("/stripe/charge/", cors(), async (req, res,) => {
     // console.log("stripe-routes.js 9 | route reached", req.body);
-    let { amount, id } = req.body;
+    let { amount,customer,id } = req.body;
+// console.log("hello I am db",db);
+    console.log("hell amout",amount);
+      console.log("hello I am organizations id on the route",req.body.organizationId);
 
     db.collection('donation').save({
       // setting property for a specific users
+
       // user: req.user,
-      userId: ObjectId(req.session.passport.email),
-      // organizationId: ObjectId(req.body.organizationId),
-      amount: amount
-    })
+
+      organizationId: ObjectId(req.body.organizationId),
+      amount: amount,
+      customer:customer
+    }),
+
+
+
+
+        // db.collection('organizations').save({
+        //   // setting property for a specific users
+        //
+        //   // user: req.user,
+        //   // userId: ObjectId(req.session.passport.email),
+        //
+        //   // organizationId: ObjectId(req.body.organizationId),
+        //   amount: amount,
+        //   userId: ObjectId(req.body.userId),
+        //
+        //   organizationId: ObjectId(req.body.organizationId),
+        //   customer:customer
+        // }),
+
+        // db.organizations.updateOne(
+        //    {   _id: ObjectId("5fbabe871edac7fe934acfd6") },
+        //    {
+        //      $set: { "size.uom": "cm", status: "P" },
+        //      $currentDate: { lastModified: true }
+        //    }
+        // )
+
+      //   db.collection('organizations').update({
+      //     _id: ObjectId("5fbabe871edac7fe934acfd6")
+      // }, {
+      //   "citiName": "Jakarta Selatan",
+      //   "provName": "test update Jakarta",
+      //   amount:amount
+      // }, {
+      //   upsert: true
+      // }),
+    console.log("hell amout",amount);
 
     // console.log("stripe-routes.js 10 | amount and id", amount, id);
     try {
       const payment = await stripe.paymentIntents.create({
         amount: amount,
         currency: "USD",
-        description: "Your Company Description",
+        description: customer,
         payment_method: id,
         confirm: true,
       });
@@ -72,8 +108,26 @@ module.exports = function (app, passport, db, ObjectId) {
     }
   });
 
-    app.get("/organizations", (req, res) => {
-      db.collection("organizations")
+
+
+  app.get("/donationAmount",(req, res) => {
+    console.log("hello I am donationAmount",req.session.passport.user.email);
+    db.collection("donation")
+      .find({customer:req.session.user.email})
+      .toArray((err, result) => {
+        if (err) return console.log(err);
+
+        res.send({ result: result });
+      });
+  });
+
+
+
+
+
+
+    app.get("/organizations", isLoggedIn,(req, res) => {
+      db.collection("donation")
         .find()
         .toArray((err, result) => {
           if (err) return console.log(err);

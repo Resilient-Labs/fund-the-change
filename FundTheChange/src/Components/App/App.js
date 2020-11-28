@@ -15,6 +15,7 @@ import Home from '../Home/Home';
 import About from '../About/About';
 
 import Tracker from '../Tracker/Tracker';
+import TrackerCard from '../Tracker/TrackerCard.js';
 import FavoriteOrgCard from '../FavoriteOrgCard/FavoriteOrgCard';
 import OrgCard from '../OrganizationCard/OrgCard';
 import OrganizationCardContainer from '../OrganizationCard/OrganizationCardContainer';
@@ -63,6 +64,7 @@ function App() {
     <Switch>
     <Route exact path="/profile">
     <Header/>
+    <TrackerCard/>
     <Tracker/>
     <FavoriteOrgCard/>
     <Footer/>
@@ -70,10 +72,10 @@ function App() {
     </Switch>
 
     <Switch>
-      <Route exact path="/Stripe">
+      <Route exact path="/stripe/:id">
       <Header/>
 
-        <StripeContainer />
+        <StripeContainer  />
         <Footer/>
 
       </Route>

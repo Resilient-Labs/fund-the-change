@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./OrganizationCardContainer.css";
 import OrgCard from "./OrgCard.js";
-// import Cat from './cat.jpeg'
-//import OrgCard from "../OrganizationCard/OrgCard";
 
 const OrganizationCardContainer = () => {
   const [holding, setHolding] = useState([]);

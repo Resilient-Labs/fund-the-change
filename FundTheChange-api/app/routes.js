@@ -1,4 +1,5 @@
 module.exports = function (app, passport, db, ObjectId) {
+
   app.get("/userJournals", (req, res) => {
     let uId = ObjectId(req.session.passport.user);
     console.log(uId);
@@ -22,9 +23,7 @@ module.exports = function (app, passport, db, ObjectId) {
         .find({ $text: { $search: search } })
         .toArray((err, result) => {
           if (err) return console.log(err);
-          res.send({
-            organizations: result,
-          });
+          res.send({organizations: result});
         });
     }
   });
@@ -32,15 +31,6 @@ module.exports = function (app, passport, db, ObjectId) {
   const fs = require('fs')
 
   app.use(cors());
-
-
-
-// is loogedd in funciton to check who's logged in
-  function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-    res.redirect('/');
-}
 
   // process the login form
   app.post("/login", passport.authenticate("local-login"), (req, res) => {
@@ -62,9 +52,10 @@ module.exports = function (app, passport, db, ObjectId) {
       .find()
       .toArray((err, result) => {
         if (err) return console.log(err);
-
-
         res.send({ result: result });
+      })
+    };
+    
   app.post("/stripe/charge/", cors(), async (req, res,) => {
     // console.log("stripe-routes.js 9 | route reached", req.body);
     let { amount,customer,id } = req.body;
@@ -141,15 +132,8 @@ module.exports = function (app, passport, db, ObjectId) {
   });
 
   app.get("/favorites", isLoggedIn, (req, res) => {
-    //usersProfile.favorites.forEach({
-    //  mongoQuery.organizations.find(IDS===IDS){
-    //
-    // }
-    //}
-    //})
+    //To fill in later
   });
-
-
 
   app.get("/donationAmount",(req, res) => {
     console.log("hello I am donationAmount",req.session.passport.user.email);
@@ -161,17 +145,6 @@ module.exports = function (app, passport, db, ObjectId) {
         res.send({ result: result });
       });
   });
-
-
-
-
-
-
-    app.get("/organizations", isLoggedIn,(req, res) => {
-      db.collection("donation")
-        .find()
-        .toArray((err, result) => {
-          if (err) return console.log(err);
 
   // route middleware to ensure user is logged in
   function isLoggedIn(req, res, next) {

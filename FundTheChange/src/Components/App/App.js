@@ -19,7 +19,6 @@ import FavoriteOrgCard from '../FavoriteOrgCard/FavoriteOrgCard';
 import OrgCard from '../OrganizationCard/OrgCard';
 import OrganizationCardContainer from '../OrganizationCard/OrganizationCardContainer';
 import HighlightedOrg from '../HighlightedOrg/HighlightedOrg'
-import StripeContainer from "../Stripe/StripeContainer";
 
 
 function App() {
@@ -67,14 +66,6 @@ function App() {
     <FavoriteOrgCard/>
     <Footer/>
     </Route>
-    </Switch>
-
-    <Switch>
-      <Route exact path="/Stripe">
-        <Header/>
-        <StripeContainer />
-        <Footer/>
-      </Route>
     </Switch>
 
     <Switch>

@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "axois": "0.0.1-security",
+
+    "axios": "^0.21.0",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "connect-flash": "~0.1.1",

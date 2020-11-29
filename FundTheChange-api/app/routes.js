@@ -13,6 +13,22 @@ module.exports = function (app, passport, db, ObjectId) {
       });
   });
 
+  //User Org Search
+  app.post("/search", (req, res) => {
+    let search = req.body.search;
+    if (search) {
+      //search collection using mongodb text indexes
+      db.collection("organizations")
+        .find({ $text: { $search: search } })
+        .toArray((err, result) => {
+          if (err) return console.log(err);
+          res.send({
+            organizations: result,
+          });
+        });
+    }
+  });
+
   // process the login form
   app.post("/login", passport.authenticate("local-login"), (req, res) => {
     res.redirect("/profile");
@@ -38,7 +54,6 @@ module.exports = function (app, passport, db, ObjectId) {
       });
   });
 
-  console.log("Michael");
   app.get("/users", isLoggedIn, (req, res) => {
     const uId = ObjectId(req.session.passport.user);
     db.collection("users")

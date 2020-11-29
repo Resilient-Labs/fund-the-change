@@ -82,14 +82,13 @@ function App() {
             </Route>
           </Switch>
 
-      <Switch>
-    <Route exact path="/stripe">
-    <Header/>
-    <Stripe/>
-    <Footer/>
-    </Route>
-    </Switch>
-
+          <Switch>
+            <Route exact path="/stripe">
+              <Header />
+              <Stripe />
+              <Footer />
+            </Route>
+          </Switch>
 
           <Switch>
             <Route exact path="/generalOrgs">

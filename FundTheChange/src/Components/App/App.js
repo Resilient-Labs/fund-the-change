@@ -16,6 +16,7 @@ import OrganizationCardContainer from "../OrganizationCard/OrganizationCardConta
 import HighlightedOrg from "../HighlightedOrg/HighlightedOrg";
 
 function App() {
+<<<<<<< Updated upstream
   const [holding, setHolding] = useState([]);
 
   useEffect(() => {
@@ -141,6 +142,74 @@ function App() {
   //     </div>
   //   );
   // }
+=======
+  return (
+
+    <div className="App">
+
+    <Router>
+    <Switch>
+    <Route exact path="/">
+    <Header/>
+    <Home/>
+    <Footer/>
+    </Route>
+    </Switch>
+
+    <Switch>
+    <Route exact path="/signup">
+    <Header/>
+    <Signup/>
+    <Footer/>
+    </Route>
+    </Switch>
+
+    <Switch>
+    <Route exact path="/login">
+    <Header/>
+    <Login/>
+    <Footer/>
+    </Route>
+    </Switch>
+
+    <Switch>
+    <Route exact path="/about">
+    <Header/>
+    <About/>
+    <Footer/>
+    </Route>
+    </Switch>
+
+    <Switch>
+    <Route exact path="/profile">
+    <Header/>
+    <Tracker/>
+    <FavoriteOrgCard/>
+    <FavoriteOrgCard/>
+    <FavoriteOrgCard/>
+    <FavoriteOrgCard/>
+    <Footer/>
+    </Route>
+    </Switch>
+
+    <Switch>
+    <Route exact path="/generalOrgs">
+    <Header/>
+    <HighlightedOrg/>
+    <OrganizationCardContainer />
+    <Footer/>
+    </Route>
+    </Switch>
+   </Router>
+
+
+
+
+
+    </div>
+
+  );
+>>>>>>> Stashed changes
 }
 
 export default App;

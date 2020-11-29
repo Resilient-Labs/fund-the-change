@@ -231,7 +231,7 @@ function App() {
     <Route exact path="/generalOrgs">
     <Header/>
     <HighlightedOrg/>
-    <OrganizationCardContainer />
+    {/*<OrganizationCardContainer />*/}
     <Footer/>
     </Route>
     </Switch>

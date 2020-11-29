@@ -1,25 +1,29 @@
 import React, {Component} from 'react'
-import { Figure } from 'react-bootstrap';
+import { Figure, Button } from 'react-bootstrap';
 import './HighlightedOrg.css'
-// import Cat from './cat.jpeg'
+import grassroots from './grassroots.jpg'
 import OrganizationCardContainer from '../OrganizationCard/OrganizationCardContainer'
 
  class HighlightedOrg extends Component{
      render(){
         return (
-          <div className="test">
+          <div className="test" style={{width:'100vw', backgroundColor:'#c4e2b2'}}>
             <div className='highlighted'>
-              <a href='/organizations/organizations._id'>
-              {/* BACKEND ROUTE FOR EACH ORGANIZATION */}
-                <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=1.00xw:0.749xh;0,0.154xh&resize=980:*" alt='Cat' width={171} height={180} />
+              <a className='highlighted-img' href='/'>
+              <h2>Highlighted Title</h2>
+              {/* BACKEND ROUTE FOR EACH ORGANIZATION ; LOOP? MAP?*/}
               </a>
-              <Figure>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              {/*<Figure className='highlighted-figure'>
                 <Figure.Caption>
                   Highlighted org description
                 </Figure.Caption>
-              </Figure>
+              </Figure> */}
             </div>
-                <OrganizationCardContainer />
+              <OrganizationCardContainer className='highlighted-cards'/>
           </div>
         )
      }

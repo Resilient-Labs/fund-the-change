@@ -10,8 +10,21 @@ export const CheckoutForm = () => {
   const elements = useElements();
   const [amount, setAmount ] = useState(0);
   const [customer, setcustomer ] = useState(0);
+
+
+
+
+
+
+
+
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const index = window.location.pathname.lastIndexOf("/")
+    const organizations= window.location.pathname.slice(index+1)
+    console.log("hello I am organizations id",organizations);
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
@@ -25,6 +38,9 @@ export const CheckoutForm = () => {
           {
             amount: amount,
             customer:customer,
+
+            organizationId:organizations,
+
             id: id,
           }
         );
@@ -80,6 +96,19 @@ export const CheckoutForm = () => {
     </div>
       <CardElement options={CARD_OPTIONS} className="cardInput"/>
       <Button className="payBtn">Pay</Button>
+
+    <form onSubmit={handleSubmit} style={{ maxWidth: 400 }}>
+    <section className="payment">
+    <div>
+    <p>Enter Amount </p>
+    <input className="field" placeholder="Amount" onChange={ (e) => setAmount(e.target.value)}/>
+    </div>
+    <div>
+    <p> Enter email </p>
+    <input className="field" placeholder="Email" onChange={ (e) => setcustomer(e.target.value)}/>
+    </div>
+      <CardElement />
+      <button className="Pay">Pay</button>
       </section>
     </form>
     </div>

@@ -9,7 +9,7 @@ const OrgCard = (props) => {
         <Card.Text>Type: {props.props.type}</Card.Text>
         <Card.Text>Description: {props.props.description}</Card.Text>
         <Card.Text>Website: {props.props.website}</Card.Text>
-        <Button variant="primary">BUTTON</Button>
+        <Button href={"/stripe/" + props.props._id} variant="primary"> Donate Now</Button>
       </Card.Body>
     </Card>
   );

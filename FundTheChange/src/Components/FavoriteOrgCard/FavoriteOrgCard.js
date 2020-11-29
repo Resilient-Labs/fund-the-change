@@ -10,7 +10,7 @@ class FavoriteOrgCard extends Component{
       <div className="cardHolder">
       <CardDeck>
     <Card style={{border: '2px solid rgb(141,174,113)'}}>
-      <Card.Img variant="top" src="holder.js/100px160" />
+      <Card.Img variant="top" src="http://placekitten.com/1000/1600" />
       <Card.Body>
         <Card.Title>Card title</Card.Title>
         <Card.Text>

@@ -39,7 +39,6 @@ function App() {
   */
 
   // console.log(userId, "THIS IS USERID AFTER FETCH");
-  if (holding !== "False") {
     return (
       <div className="App">
         <Router>
@@ -85,17 +84,24 @@ function App() {
           </Switch>
 
           <Switch>
+            <Route exact path="/stripe/:id">
+            <Header />
+            <StripeContainer />
+            <Footer />
+            </Route>
+        </Switch>
+
+          <Switch>
             <Route exact path="/generalOrgs">
               <Header />
               <HighlightedOrg />
-              <OrganizationCardContainer />
               <Footer />
             </Route>
           </Switch>
         </Router>
       </div>
     );
-  }
+
   //: {
   //   return (
   //     <div className="App">
@@ -136,74 +142,73 @@ function App() {
   //   );
   // }
 
-  return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Header />
-            <Home />
-            <Footer />
-          </Route>
-        </Switch>
-
-        <Switch>
-          <Route exact path="/signup">
-            <Header />
-            <Signup />
-            <Footer />
-          </Route>
-        </Switch>
-
-        <Switch>
-          <Route exact path="/login">
-            <Header />
-            <Login />
-            <Footer />
-          </Route>
-        </Switch>
-
-        <Switch>
-          <Route exact path="/about">
-            <Header />
-            <About />
-            <Footer />
-          </Route>
-        </Switch>
-
-        <Switch>
-          <Route exact path="/profile">
-            <Header />
-            <TrackerCard />
-            <Tracker />
-            <FavoriteOrgCard />
-            <FavoriteOrgCard />
-            <FavoriteOrgCard />
-            <FavoriteOrgCard />
-            <Footer />
-          </Route>
-        </Switch>
-
-        <Switch>
-          <Route exact path="/stripe/:id">
-            <Header />
-
-            <StripeContainer />
-            <Footer />
-          </Route>
-        </Switch>
-
-        <Switch>
-          <Route exact path="/generalOrgs">
-            <Header />
-            <HighlightedOrg />
-            {/*<OrganizationCardContainer />*/}
-            <Footer />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
-  );
+  // return (
+  //   <div className="App">
+  //     <Router>
+  //       <Switch>
+  //         <Route exact path="/">
+  //           <Header />
+  //           <Home />
+  //           <Footer />
+  //         </Route>
+  //       </Switch>
+  //
+  //       <Switch>
+  //         <Route exact path="/signup">
+  //           <Header />
+  //           <Signup />
+  //           <Footer />
+  //         </Route>
+  //       </Switch>
+  //
+  //       <Switch>
+  //         <Route exact path="/login">
+  //           <Header />
+  //           <Login />
+  //           <Footer />
+  //         </Route>
+  //       </Switch>
+  //
+  //       <Switch>
+  //         <Route exact path="/about">
+  //           <Header />
+  //           <About />
+  //           <Footer />
+  //         </Route>
+  //       </Switch>
+  //
+  //       <Switch>
+  //         <Route exact path="/profile">
+  //           <Header />
+  //           <TrackerCard />
+  //           <Tracker />
+  //           <FavoriteOrgCard />
+  //           <FavoriteOrgCard />
+  //           <FavoriteOrgCard />
+  //           <FavoriteOrgCard />
+  //           <Footer />
+  //         </Route>
+  //       </Switch>
+  //
+  //       <Switch>
+  //         <Route exact path="/stripe/:id">
+  //           <Header />
+  //           <StripeContainer />
+  //           <Footer />
+  //         </Route>
+  //       </Switch>
+  //
+  //       <Switch>
+  //         <Route exact path="/generalOrgs">
+  //           <Header />
+  //           <HighlightedOrg />
+  //           {/*<OrganizationCardContainer />*/}
+  //           <Footer />
+  //         </Route>
+  //       </Switch>
+  //     </Router>
+  //   </div>
+  // );
 }
 
 export default App;

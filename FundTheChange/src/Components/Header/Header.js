@@ -7,19 +7,9 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
+import Search from "./Search";
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.loggedIn = props.loggedIn;
-    console.log(props, "THIS IS FROM HEADER");
-  }
-
-  logOut = () => {
-    console.log("Click");
-    fetch("/logout").then((data) => (window.location.href = "/"));
-  };
-
   render() {
     return (
       <Navbar bg="dark" variant="dark">
@@ -27,22 +17,14 @@ class Header extends Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/generalOrgs">Organizations</Nav.Link>
-            {this.loggedIn === true ? (
-              <Button variant="outline-success" onClick={this.logOut}>
-                Log Out
-              </Button>
-            ) : (
-              <Button variant="outline-success" href="/login">
-                Log In
-              </Button>
-            )}
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#link">Organizations</Nav.Link>
+            <NavDropdown title="More" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.3">Log Out</NavDropdown.Item>
+              <NavDropdown.Divider />
+            </NavDropdown>
           </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success">Search Organization</Button>
-          </Form>
+          <Search />
         </Navbar.Collapse>
       </Navbar>
     );

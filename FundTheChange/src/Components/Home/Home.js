@@ -106,7 +106,7 @@ import "./Home.css";
         <Row>
         <Col>
         <h1>Ready to get started</h1>
-        <p> <span className="bye"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</span> </p>
+        <p> <span> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</span> </p>
         <Button href= "/about">Learn More</Button>
         </Col>
         </Row>

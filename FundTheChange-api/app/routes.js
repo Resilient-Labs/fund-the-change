@@ -50,6 +50,7 @@ app.post('/login', passport.authenticate('local-login', {
   );
 
 
+  // route to post donation amount to stripe AND to save the information into the DB
     app.post("/stripe/charge/", cors(), async (req, res,) => {
       // console.log("stripe-routes.js 9 | route reached", req.body);
       let { amount,customer,id } = req.body;
@@ -70,7 +71,7 @@ app.post('/login', passport.authenticate('local-login', {
       // console.log("stripe-routes.js 10 | amount and id", amount, id);
       try {
         const payment = await stripe.paymentIntents.create({
-          amount: amount,
+          amount: amount * 100,
           currency: "USD",
           description: customer,
           payment_method: id,
@@ -90,7 +91,7 @@ app.post('/login', passport.authenticate('local-login', {
       }
     });
 
-
+// route to get the information from the user that is currently logged in
   app.get("/users", (req, res) => {
     const uId = ObjectId(req.session.passport.user);
     db.collection("users")
@@ -103,7 +104,7 @@ app.post('/login', passport.authenticate('local-login', {
   });
 
 
-
+// route to get a user's favorite organizations
   app.get("/favorites", isLoggedIn, (req,res)=> {
     db.collection("users")
       .find({_id: ObjectId(req.session.passport.user)})
@@ -119,7 +120,7 @@ app.post('/login', passport.authenticate('local-login', {
       })
   })
 
-
+  // route to add a organization to a user's favorites
   app.post("/favorites/:organizationId", isLoggedIn, (req, res) => {
     let orgId= ObjectId(req.params.organizationId)
     db.collection("users")
@@ -139,6 +140,8 @@ app.post('/login', passport.authenticate('local-login', {
   console.log("YOU HAVE SAVED FAVORITES", orgId)
   });
 
+
+  //Route to get a user's total donation amount
   app.get("/donationAmount/:userId",(req, res) => {
     console.log(req.params.userId, "THIS IS THE USERID FROM THE TRACKER-- ROUTE")
     let userId = ObjectId(req.params.userId)
@@ -147,7 +150,7 @@ app.post('/login', passport.authenticate('local-login', {
       .toArray((err, result) => {
         if (err) return console.log(err);
         let monies = result.map(donation => donation.amount)
-        monies = monies.reduce((a,c)=> parseInt(a)+ parseInt(c))
+        monies = monies.reduce((a,c)=> a + parseFloat(c), 0)
         console.log(monies, "YOUR MONIES")
       res.send({ result:  result,
         monies: monies
@@ -155,6 +158,27 @@ app.post('/login', passport.authenticate('local-login', {
 
       });
   });
+
+
+//route to get organization's total donation amount
+  app.get("/donationAmount/org/:orgId",(req, res) => {
+    console.log(req.params.orgId, "THIS IS THE ORGID FROM THE TRACKER-- ROUTE")
+    let orgId = ObjectId(req.params.orgId)
+    db.collection("donation")
+      .find({organizationId: orgId})
+      .toArray((err, result) => {
+        if (err) return console.log(err);
+        let monies = result.map(donation => donation.amount)
+        monies = monies.reduce((a,c)=> a + parseFloat(c), 0)
+        console.log(monies, "\nYOUR ORG MONIES")
+      res.send(
+        { result: result,
+          monies: monies
+        });
+      });
+  });
+
+
 
   // route middleware to ensure user is logged in
   function isLoggedIn(req, res, next) {

@@ -5,11 +5,25 @@
 
 .progress {
     width: 40%;
+    margin: 3px;
+    height: 1.5rem;
+}
+
+.tracker-container{
+  padding-top: 20px;
+  margin-top: 4%;
+  margin-right: auto;
+  border: 4px double rgb(141,174,113);
+  background: #FFF;
+  width: 85%;
+  height: 200px;
+  margin-left: auto;
 }
 
 .tracker-title{
     text-align: center;
 }
+
 .progressBar{
   display: flex;
   flex-direction: column;

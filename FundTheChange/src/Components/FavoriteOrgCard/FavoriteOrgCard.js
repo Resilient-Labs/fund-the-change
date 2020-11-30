@@ -1,56 +1,38 @@
-import React, {Component} from 'react'
-import { Button,Card, CardDeck } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react'
+import { Button, Card, CardDeck } from 'react-bootstrap';
+import './FavoriteOrgCard.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+const FavoriteOrgCard = (props) => {
+  const [favorites, setFavorites] = useState([]);
 
-class FavoriteOrgCard extends Component{
-  render(){
-    return (
-      <div className="cardHolder">
-      <CardDeck>
-    <Card>
-      <Card.Img variant="top" src="holder.js/100px160" />
-      <Card.Body>
-        <Card.Title>Card title</Card.Title>
-        <Card.Text>
-          This is a wider card with supporting text below as a natural lead-in to
-          additional content. This content is a little bit longer.
-        </Card.Text>
-      </Card.Body>
-      <Card.Footer>
-        <Button variant="primary">Donate Again</Button>
-      </Card.Footer>
-    </Card>
-    <Card>
-      <Card.Img variant="top" src="holder.js/100px160" />
-      <Card.Body>
-        <Card.Title>Card title</Card.Title>
-        <Card.Text>
-          This card has supporting text below as a natural lead-in to additional
-          content.{' '}
-        </Card.Text>
-      </Card.Body>
-      <Card.Footer>
-        <Button variant="primary">Donate Again</Button>
-      </Card.Footer>
-    </Card>
-    <Card>
-      <Card.Img variant="top" src="holder.js/100px160" />
-      <Card.Body>
-        <Card.Title>Card title</Card.Title>
-        <Card.Text>
-          This is a wider card with supporting text below as a natural lead-in to
-          additional content. This card has even longer content than the first to
-          show that equal height action.
-        </Card.Text>
-      </Card.Body>
-      <Card.Footer>
-          <Button variant="primary">Donate Again</Button>
-      </Card.Footer>
-    </Card>
-  </CardDeck>
+  useEffect(() => {
+    fetch("/favorites")
+      .then((res) => res.json())
+      .then((data) => {
+        setFavorites(data.result);
+      });
+  }, [props.user]); //<--Keep this array empty for only one update
+
+  return (
+    favorites.map((x, i) => {
+      return <div key={i} favorites={x}>
+        <div className="cardHolder">
+        <CardDeck>
+          <Card style={{border: '2px solid rgb(141,174,113)'}}>
+            <Card.Img variant="top" src={`${x.imageLink}`} style={{backgroundImage: 'contain', height: '300px', width: '454px'}}/>
+            <Card.Body>
+              <Card.Title>{x.name}</Card.Title>
+            </Card.Body>
+            <Card.Footer>
+              <Button href={"/stripe/" + x._id} variant="primary">Donate Again</Button>
+            </Card.Footer>
+          </Card>
+        </CardDeck>
+        </div>
       </div>
-    )
-  }
+    })
+  )
 }
+
 export default FavoriteOrgCard;
-  <Button variant="primary">Donate Again</Button>

@@ -30,6 +30,8 @@ function App() {
       });
   }, []);
 
+  console.log(holding, "THIS SHOULD BE THE USER AFTER THE FETCH")
+
   return holding.length > 0 ? ( //This portion will show when holding is filled
     <div className="App">
       <Router>

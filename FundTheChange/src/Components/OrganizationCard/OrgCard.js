@@ -13,7 +13,7 @@ const OrgCard = (props) => {
         <Card.Text className='Card-text'>Website: {props.props.website}</Card.Text>
         <Button  href={"/stripe/" + props.props._id} variant="primary">Donate</Button>
         <form action={`/favorites/${props.props._id}`} method="post">
-        <Button type="submit" variant="primary">Favorite Me!</Button>
+        <Button type="submit" variant="primary" style={{ marginTop:'2px'}}> + Favorite </Button>
         </form>
       </Card.Body>
     </Card>

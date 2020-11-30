@@ -20,12 +20,9 @@ const FavoriteOrgCard = (props) => {
         <div className="cardHolder">
         <CardDeck>
           <Card style={{border: '2px solid rgb(141,174,113)'}}>
-            <Card.Img variant="top" src={`${x.imageLink}`} />
+            <Card.Img variant="top" src={`${x.imageLink}`} style={{backgroundImage: 'contain', height: '300px', width: '454px'}}/>
             <Card.Body>
               <Card.Title>{x.name}</Card.Title>
-              <Card.Text>
-                {x.description}
-              </Card.Text>
             </Card.Body>
             <Card.Footer>
               <Button href={"/stripe/" + x._id} variant="primary">Donate Again</Button>

@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box ;
+}
+
+.test {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.highlighted{
+  width: 80vw;
+  float: none;
+  border: 5px solid black;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background-color: white;
+
+  /* justify-content: center; */
+}
+.highlighted-figure {
+  font-size: 3rem;
+}
+
+.highlighted-figure {
+  font-size: 2rem;
+  padding-left: 14rem;
+}
+.highlighted-cards {
+  width: 100vw;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media

@@ -25,7 +25,7 @@ const FavoriteOrgCard = (props) => {
               <Card.Title>{x.name}</Card.Title>
             </Card.Body>
             <Card.Footer>
-              <Button href={"/stripe/" + x._id} variant="primary">Donate Again</Button>
+              <Button href={"/stripe/" + x._id} variant="primary">Donate!</Button>
             </Card.Footer>
           </Card>
         </CardDeck>

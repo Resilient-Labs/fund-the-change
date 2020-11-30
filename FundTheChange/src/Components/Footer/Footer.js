@@ -5,13 +5,13 @@ function Footer() {
   return (
     <div className="main-footer">
 
+
+      <div className="footer-links">
       <section className="footerSection1">
-            <h6 className="bye title">Fund The Change</h6>
             <ul className="">
-              <li className="under bye"><a href="#">FAQs</a></li>
-              <li className="under bye"><a href="#">Volunteer</a></li>
-              <li className="under bye"><a href="#">About</a></li>
-              <li className="under bye"><a href="#">Org Sign-Up</a></li>
+            <li className="under bye"><a className="under" href="/">Fund The Change</a></li>
+              <li className="under bye"><a className="under" href="/about">About</a></li>
+              <li className="under bye"><a className="under" href="/generalOrgs">Organizations</a></li>
             </ul>
      </section>
 
@@ -26,30 +26,23 @@ function Footer() {
             </section>
 
 
-        <section>
-            <ul className="footerSection3">
-              <li className="under">Contact us</li>
-              <li className="under"><a className="under" href="#"><i class="fab fa-instagram"></i></a></li>
-              <li className="under"><a className="under" href="#"><i class="fab fa-facebook-f"></i></a></li>
-              <li className="under"><a className="under" href="#"><i class="fab fa-twitter"></i></a></li>
-            </ul>
-            </section>
-
         <section className="footerSection4">
             <ul className="">
-              <li className="under bye"><a className="under" href="#">Legal Stuff</a></li>
-              <li className="under bye"><a className="under" href="#">Privacy Policy  </a></li>
-              <li><a className="under bye" href="#">Terms Of Use</a></li>
+              <li className="under bye"><a className="under" href="/signup">Sign Up </a></li>
+              <li><a className="under bye" href="/login">Log In</a></li>
             </ul>
             </section>
 
+      </div>
 
+      <div>
+            <section className="footerSection5">
+            <p className="">
+              &copy;{new Date().getFullYear()} FundTheChange - ResilientLabs - All Rights Reserved
+            </p>
+          </section>
 
-      <section className="footerSection5">
-      <p className="">
-        &copy;{new Date().getFullYear()} FundTheChange - ResilientLabs - All Rights Reserved
-      </p>
-    </section>
+      </div>
 
     </div>
 

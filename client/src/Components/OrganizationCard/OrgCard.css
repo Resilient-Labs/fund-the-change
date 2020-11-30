@@ -1,0 +1,8 @@
+@media (min-width:300px) and (max-width:500px){
+  .Card-title, .Card-text{
+    margin: 0;
+    width: 80%;
+    
+
+  }
+}

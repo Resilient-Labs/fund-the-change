@@ -61,7 +61,8 @@ app.post('/login', passport.authenticate('local-login', {
         // setting property for a specific users
         organizationId: ObjectId(req.body.organizationId),
         amount: amount,
-        customer:customer
+        customer:customer,
+        userId: ObjectId(req.body.userId)
       }),
 
       console.log("hell amout",amount);
@@ -101,31 +102,73 @@ app.post('/login', passport.authenticate('local-login', {
       });
   });
 
-  app.get("/favorites", isLoggedIn, (req, res) => {
-    //To fill in later
+
+
+  app.get("/favorites", isLoggedIn, (req,res)=> {
+    db.collection("users")
+      .find({_id: ObjectId(req.session.passport.user)})
+      .toArray((err, resultOne) =>{
+        if (err) return console.log(err);
+        const favOrg = resultOne[0].local.favorites.map(x => x)
+        db.collection('organizations')
+          .find({ _id : { $in: [...favOrg] } })
+          .toArray((err, resultTwo) => {
+            if (err) return console.log(err);
+              res.send({ result: resultTwo })
+          })
+      })
+  })
+
+
+  app.post("/favorites/:organizationId", isLoggedIn, (req, res) => {
+    let orgId= ObjectId(req.params.organizationId)
+    db.collection("users")
+      .findOneAndUpdate({_id: ObjectId(req.session.passport.user)},
+    {
+      $push:{
+        "local.favorites": orgId
+      }
+    },
+      {
+      sort: {_id: -1},
+      upsert: true
+    }, (err, result) => {
+      if (err) return res.send(err)
+      res.redirect("/profile")
+    })
+  console.log("YOU HAVE SAVED FAVORITES", orgId)
   });
 
-  app.get("/donationAmount",(req, res) => {
-    // console.log("hello I am donationAmount",req.session.passport.user.email);
+  app.get("/donationAmount/:userId",(req, res) => {
+    console.log(req.params.userId, "THIS IS THE USERID FROM THE TRACKER-- ROUTE")
+    let userId = ObjectId(req.params.userId)
     db.collection("donation")
-      .find({})
+      .find({userId: userId})
       .toArray((err, result) => {
         if (err) return console.log(err);
-        res.send({ result: result });
+        let monies = result.map(donation => donation.amount)
+        monies = monies.reduce((a,c)=> parseInt(a)+ parseInt(c))
+        console.log(monies, "YOUR MONIES")
+      res.send({ result:  result,
+        monies: monies
+        });
+
       });
   });
 
   // route middleware to ensure user is logged in
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();
-    //If not loggedin then you are returning a '404'
+    //If not loggedin then you are returning a '401' / Unauthorized
     res.sendStatus(401);
   }
 
   // LOGOUT ==============================
   app.get("/logout", function (req, res) {
-    req.logout();
-    res.redirect("/");
+    console.log('You have attempted to logout')
+    console.log('You have logged out')
+    req.session.destroy();
+    //res.send({result: "success"});
   });
 
 };

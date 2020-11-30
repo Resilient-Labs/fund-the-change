@@ -3,7 +3,7 @@ import './Stripe.css'
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 
-export const CheckoutForm = () => {
+export const CheckoutForm = (props) => {
   const stripe = useStripe();
   const elements = useElements();
   const [amount, setAmount ] = useState(0);
@@ -14,6 +14,9 @@ export const CheckoutForm = () => {
     const index = window.location.pathname.lastIndexOf("/")
     const organizations= window.location.pathname.slice(index+1)
     console.log("hello I am organizations id",organizations);
+
+
+
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
@@ -30,12 +33,14 @@ export const CheckoutForm = () => {
             customer:customer,
             organizationId:organizations,
             id: id,
+            userId: props.user
           }
         );
 
         console.log("Stripe 35 | data", response.data.success);
         if (response.data.success) {
-          console.log("CheckoutForm.js 25 | payment successful!");
+          console.log("CheckoutForm.js 25 | payment successful!")
+          window.location ="/profile"
         }
       } catch (error) {
         console.log("CheckoutForm.js 28 | ", error);

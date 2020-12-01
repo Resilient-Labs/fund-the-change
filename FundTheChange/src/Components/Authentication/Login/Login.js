@@ -25,17 +25,6 @@ const Login = () => {
     })
   }
 
-  const handleSubmit = (e) => {
-    console.log(form)
-    e.preventDefault()
-    fetch('/login', {
-      method: "Post",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(form)
-    }).then(res => window.location.href = '/moodJournal')
-  }
   return (
     // react fragment: creates an empty element
     <div className="root">
@@ -44,7 +33,7 @@ const Login = () => {
       <p className="lead">
         Log in with your  email address.
       </p>
-      <form  className="formGroup" action='/login' method="POST" className="form-container">
+      <form  className="formGroup form-container" action='/api/login' method="POST" >
 
         <input className="input" onChange={handleChange} value={form.email} placeholder="Email" name="email" />
         <input className="input" onChange={handleChange} value={form.password} placeholder="Password" name="password" />

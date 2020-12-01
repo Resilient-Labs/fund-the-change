@@ -12,12 +12,10 @@ export const CheckoutForm = (props) => {
   const [customer, setcustomer ] = useState(0);
 
   const handleSubmit = async (event) => {
+    console.log("PAYMENT BUTTON CLICKED");
     event.preventDefault();
     const index = window.location.pathname.lastIndexOf("/")
     const organizations= window.location.pathname.slice(index+1)
-    console.log("hello I am organizations id",organizations);
-
-
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
@@ -29,7 +27,7 @@ export const CheckoutForm = (props) => {
       try {
         const { id } = paymentMethod;
         const response = await axios.post(
-          "http://localhost:8000/stripe/charge",
+          "https://final-2020b.herokuapp.com/stripe/charge",
           {
             amount: amount,
             customer:customer,
@@ -92,7 +90,7 @@ export const CheckoutForm = (props) => {
     <input className="input stripeEmail" placeholder="Email" onChange={ (e) => setcustomer(e.target.value)}/>
 
       <CardElement options={CARD_OPTIONS} className="cardInput"/>
-      <Button className="payBtn">Pay</Button>
+      <Button type="submit" className="payBtn">Pay</Button>
 
     </form>
     </div>

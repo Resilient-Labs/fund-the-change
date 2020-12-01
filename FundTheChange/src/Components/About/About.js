@@ -22,7 +22,7 @@ const About = () => {
   <h2>Donate</h2>
   <h4>Choose to make a difference</h4>
   <a href="/signup"><Button className="button2">Sign Up </Button><br/></a>
-  <img className="donationImage"src="https://cdn2.atlantamagazine.com/wp-content/uploads/sites/4/2020/03/donate_getty.jpg" />
+  <img className="donationImage" alt="" src="https://cdn2.atlantamagazine.com/wp-content/uploads/sites/4/2020/03/donate_getty.jpg" />
   </section>
 </div>
 

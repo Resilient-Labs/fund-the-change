@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, Link } from "react-router";
+import { useHistory} from "react-router";
 import OrgCard from "../OrganizationCard/OrgCard";
 import "./OrganizationSearch.css";
 
-const OrganizationSearch = () => {
+const OrganizationSearch = (props) => {
   const history = useHistory();
   const url = history.location.pathname;
   const searchInput = url.split("/")[2];
@@ -14,7 +14,7 @@ const OrganizationSearch = () => {
 
   // when the page loads up, this function will run
   useEffect(() => {
-    fetch("/search", {
+    fetch("/api/search", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ const OrganizationSearch = () => {
       .then((data) => {
         setSearch(data.organizations);
       });
-  }, []);
+  }, [searchInput]);
 
   console.log(searches);
 

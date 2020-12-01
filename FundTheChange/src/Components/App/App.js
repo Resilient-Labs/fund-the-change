@@ -9,9 +9,7 @@ import Footer from "../Footer/Footer";
 import Home from "../Home/Home";
 import About from "../About/About";
 import Tracker from "../Tracker/Tracker";
-import TrackerCard from "../Tracker/TrackerCard.js";
 import FavoriteOrgCard from "../FavoriteOrgCard/FavoriteOrgCard";
-import OrganizationCardContainer from "../OrganizationCard/OrganizationCardContainer";
 import HighlightedOrg from "../HighlightedOrg/HighlightedOrg";
 import StripeContainer from "../Stripe/StripeContainer";
 import OrganizationSearch from "../OrganizationSearch/OrganizationSearch";
@@ -21,7 +19,7 @@ function App() {
 
   //used to pull the user's profile information and store it in holding
   useEffect(() => {
-    fetch("/users")
+    fetch("/api/users")
       .then((res) => res.json())
       .then((data) => {
         let result = data.result[0]._id
@@ -70,7 +68,7 @@ function App() {
         <Switch>
           <Route exact path="/organizationsearch/:id">
           <Header user={holding}/>
-          <OrganizationSearch />
+          <OrganizationSearch user={holding}/>
           <Footer />
           </Route>
         </Switch>
@@ -139,7 +137,7 @@ function App() {
       <Switch>
         <Route exact path="/organizationsearch/:id">
         <Header user={holding}/>
-        <OrganizationSearch />
+        <OrganizationSearch user={holding}/>
         <Footer />
         </Route>
       </Switch>

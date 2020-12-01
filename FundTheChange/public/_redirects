@@ -1,0 +1,2 @@
+/api/*                     https://final-2020b.herokuapp.com/:splat    200
+/*                         /index.html     200

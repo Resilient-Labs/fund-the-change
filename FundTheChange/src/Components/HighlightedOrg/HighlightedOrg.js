@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
-import { Figure, Button } from 'react-bootstrap';
 import './HighlightedOrg.css'
-import grassroots from './grassroots.jpg'
 import OrganizationCardContainer from '../OrganizationCard/OrganizationCardContainer'
 
  class HighlightedOrg extends Component{

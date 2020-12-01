@@ -32,6 +32,9 @@ mongoose.connect(configDB.url, (err, database) => {
 //   require('./app/routes.js')(app, passport, ObjectId);
 require('./config/passport')(passport); // pass passport for configuration
 
+//to see if Heroku server is build successully
+app.get('/', (req, res) => { res.send('Hello from Express!')})
+
 // set up our express application
 app.use(cors())
 app.use(morgan('dev')); // log every request to the console

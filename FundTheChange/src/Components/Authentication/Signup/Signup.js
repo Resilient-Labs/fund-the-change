@@ -11,10 +11,8 @@ const Signup = () => {
       <p className="lead">
         Sign Up with your email address.
       </p>
-      <form className="formGroup" method="POST" action='/signup'>
+      <form className="formGroup" method="POST" action='/api/signup'>
         {/* in order for react to read my inputs they must be in self closing tags */}
-
-
         <input className="input"  name="email" placeholder="Email" />
         <input className="input"  name="password" placeholder="Password" />
         <button className="button">Sign me up</button>

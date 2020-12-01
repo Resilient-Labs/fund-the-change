@@ -1,5 +1,2 @@
-/api/favorites/*                  https://final-2020b.herokuapp.com/favorites/:splat    200
-/api/donationAmount/org/*         https://final-2020b.herokuapp.com/donationAmount/org/:splat   200
-/api/donationAmount/*             https://final-2020b.herokuapp.com/donationAmount:splat    200
-/api/*                            https://final-2020b.herokuapp.com/:splat    200
-/*                                /index.html     200
+/api/*                     https://final-2020b.herokuapp.com/:splat    200
+/*                         /index.html     200

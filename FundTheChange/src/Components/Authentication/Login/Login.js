@@ -33,7 +33,7 @@ const Login = () => {
       <p className="lead">
         Log in with your  email address.
       </p>
-      <form  className="formGroup form-container" action='/login' method="POST" >
+      <form  className="formGroup form-container" action='/api/login' method="POST" >
 
         <input className="input" onChange={handleChange} value={form.email} placeholder="Email" name="email" />
         <input className="input" onChange={handleChange} value={form.password} placeholder="Password" name="password" />

@@ -9,7 +9,7 @@ import Search from "./Search";
 
 const logOut = () => {
   console.log('Clicked and trying to logout');
-  fetch('/logout');
+  fetch('/api/logout');
 
   window.localStorage.clear();
   window.location.href = '/';

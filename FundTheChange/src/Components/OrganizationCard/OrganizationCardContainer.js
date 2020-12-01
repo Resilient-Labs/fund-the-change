@@ -6,7 +6,7 @@ const OrganizationCardContainer = () => {
   const [holding, setHolding] = useState([]);
 
   useEffect(() => {
-    fetch("/organizations")
+    fetch("/api/organizations")
       .then((res) => res.json())
       .then((data) => {
         console.log(data.result, "THIS IS FROM ORG CONTAINER");

@@ -6,7 +6,7 @@ const Tracker = (props) => {
   const [donate, setDonate] = useState([]);
 
   useEffect((donate) => {
-    fetch(`/donationAmount/${props.user}`)
+    fetch(`/api/donationAmount/${props.user}`)
       .then((res) => res.json())
       .then((data) => {
         setDonate(data.monies);

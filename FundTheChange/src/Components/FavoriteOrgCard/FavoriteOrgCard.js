@@ -7,7 +7,7 @@ const FavoriteOrgCard = (props) => {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-    fetch("/favorites")
+    fetch("/api/favorites")
       .then((res) => res.json())
       .then((data) => {
         setFavorites(data.result);

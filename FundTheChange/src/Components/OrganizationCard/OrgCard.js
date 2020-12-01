@@ -6,7 +6,7 @@ const OrgCard = (props) => {
   const [holding, setHolding] = useState([]);
 
   useEffect(() => {
-    fetch("/donationAmount/org/" + props.props._id)
+    fetch("/api/donationAmount/org/" + props.props._id)
       .then((res) => res.json())
       .then((data) => {
         console.log(data.monies, "\n--!!THIS IS ORG DONATION!!--");

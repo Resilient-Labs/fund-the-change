@@ -19,7 +19,7 @@ function App() {
 
   //used to pull the user's profile information and store it in holding
   useEffect(() => {
-    fetch("/users")
+    fetch("/api/users")
       .then((res) => res.json())
       .then((data) => {
         let result = data.result[0]._id

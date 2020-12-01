@@ -14,7 +14,7 @@ const OrganizationSearch = (props) => {
 
   // when the page loads up, this function will run
   useEffect(() => {
-    fetch("/search", {
+    fetch("/api/search", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

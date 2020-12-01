@@ -22,7 +22,7 @@ const OrgCard = (props) => {
         <Card.Title className='Card-title' style= {{fontWeight: 'bold'}}>Name: {props.props.name}</Card.Title>
         <Card.Text className='Card-text'>Type: {props.props.type}</Card.Text>
         <Card.Text className='Card-text'>Description: {props.props.description}</Card.Text>
-        <Card.Text className='Card-text'>Website: <a href={props.props.website} target="_blank">{props.props.website}</a></Card.Text>
+        <Card.Text className='Card-text'>Website: <a href={props.props.website} target="_blank" rel="noreferrer">{props.props.website}</a></Card.Text>
         <Card.Text className='Card-text' style={{ fontWeight: 'bold'}}>Total Donations to Date: ${holding}</Card.Text>
         <Button  href={"/stripe/" + props.props._id} variant="primary">Donate</Button>
         <form action={`/favorites/${props.props._id}`} method="post">

@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import {
   Navbar,
   Nav,
   NavDropdown,
-  Form,
-  FormControl,
   Button,
 } from "react-bootstrap";
 import Search from "./Search";
@@ -39,10 +37,10 @@ const Guest = () => {
 };
 
 const Header = (props) => {
-  const [loggedIn, setLoggedIn] = useState([]);
+  // const [loggedIn, setLoggedIn] = useState([]);
 
   useEffect(() => {
-      setLoggedIn(loggedIn, "There is a User");
+    console.log(props.user)
     }, [props.user]); //<--Keep this array empty for only one update
 
   return (

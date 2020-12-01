@@ -1,12 +1,12 @@
-/*                            /index.html   200
-/login/*                      https://final-2020b.herokuapp.com/
-/signup/*                     https://final-2020b.herokuapp.com/
-/users/*                      https://final-2020b.herokuapp.com/
-/search/*                     https://final-2020b.herokuapp.com/
-/organizations/*              https://final-2020b.herokuapp.com/
-/favorites/*                  https://final-2020b.herokuapp.com/
-/favorites/:organizationId*   https://final-2020b.herokuapp.com/
-/stripe/charge/*              https://final-2020b.herokuapp.com/
-/donationAmount/:userId/*     https://final-2020b.herokuapp.com/
-/donationAmount/org/:orgId*   https://final-2020b.herokuapp.com/
-/logout/*                     https://final-2020b.herokuapp.com/
+/                             /index.html   200
+/login                        https://final-2020b.herokuapp.com/login  200
+/signup                       https://final-2020b.herokuapp.com/signup  200
+/users                        https://final-2020b.herokuapp.com/users  200
+/search                       https://final-2020b.herokuapp.com/search  200
+/organizations                https://final-2020b.herokuapp.com/organizations  200
+/favorites                    https://final-2020b.herokuapp.com/favorites  200
+/favorites/                   https://final-2020b.herokuapp.com/favorites/:organizationId  200
+/stripe/charge                https://final-2020b.herokuapp.com/stripe/charge/  200
+/donationAmount/              https://final-2020b.herokuapp.com/donationAmount:userId  200
+/donationAmount/org/          https://final-2020b.herokuapp.com/donationAmount/org/:orgId  200
+/logout                       https://final-2020b.herokuapp.com/logout  200

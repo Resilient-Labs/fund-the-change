@@ -25,7 +25,7 @@ const OrgCard = (props) => {
         <Card.Text className='Card-text'>Website: <a href={props.props.website} target="_blank" rel="noreferrer">{props.props.website}</a></Card.Text>
         <Card.Text className='Card-text' style={{ fontWeight: 'bold'}}>Total Donations to Date: ${holding}</Card.Text>
         <Button  href={"/stripe/" + props.props._id} variant="primary">Donate</Button>
-        <form action={`/favorites/${props.props._id}`} method="post">
+        <form action={`/api/favorites/${props.props._id}`} method="post">
         <Button type="submit" variant="primary" style={{ marginTop:'2px'}}> + Favorite </Button>
         </form>
       </Card.Body>
